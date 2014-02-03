@@ -29,6 +29,8 @@ module YNote
         [u, p] == ENV['HTTP_AUTH'].split('::')
       end
     end
+
+    config.assets.precompile += ['sessions.css']
   end
 
   def self.config

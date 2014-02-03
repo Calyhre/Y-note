@@ -9,9 +9,12 @@ gem 'puma'
 gem 'rails', '4.0.2'
 gem 'pg'
 
+gem 'devise'
+
 gem 'sass-rails', '~> 4.0.0'
 gem 'slim-rails'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'font-awesome-rails'
 
 gem 'uglifier', '>= 1.3.0'
 

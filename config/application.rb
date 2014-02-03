@@ -13,6 +13,10 @@ Bundler.require(:default, Rails.env)
 
 module YNote
   class Application < Rails::Application
+    config.to_prepare do
+      Devise::SessionsController.layout 'sessions'
+    end
+
     config.i18n.default_locale = :fr
     config.i18n.enforce_available_locales = true
     I18n.config.enforce_available_locales = true

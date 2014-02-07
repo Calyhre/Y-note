@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+users = []
+
+50.times do |i|
+  first_name  = Faker::Name.first_name
+  last_name   = Faker::Name.last_name
+  email       = "#{first_name.parameterize}.#{last_name.parameterize}@y-note.com"
+
+  users << User.create( first_name: first_name, last_name: last_name, email: email, password: email, password_confirmation: email )
+end
+
+year = Period.create! title: 'Année 2013-2014', start_at: '30/09/2013', end_at: '11/04/2014'
+
+Period.create! title: 'Trimestre 1', parent: year, start_at: '30/09/2013', end_at: '30/01/2014'
+Period.create! title: 'Trimestre 2', parent: year, start_at: '31/01/2014', end_at: '11/04/2014'
+
+ing3 = Group.create! title: 'ING3', role: 'student', users: users, period: year
+
+development = Subject.create!( title: 'Development' )
+ruby = Subject.create!( title: 'Ruby', parent: development )
+
+group_subject = GroupSubject.create!( teacher: users.shuffle.first, group: ing3, subject: ruby )

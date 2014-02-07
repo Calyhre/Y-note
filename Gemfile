@@ -10,11 +10,15 @@ gem 'rails', '4.0.2'
 gem 'pg'
 
 gem 'devise'
+gem 'act_as_time_as_boolean', '~> 0.3.0'
+gem 'awesome_nested_set', '~> 3.0.0.rc.3'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'slim-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'font-awesome-rails'
+
+gem 'faker'
 
 gem 'uglifier', '>= 1.3.0'
 

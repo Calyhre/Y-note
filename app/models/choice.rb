@@ -5,5 +5,5 @@ class Choice < ActiveRecord::Base
 
   time_as_boolean :deleted, opposite: :active
 
-  validates :title, :position
+  validates :title, :position, presence: true
 end

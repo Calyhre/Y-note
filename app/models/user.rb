@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include ActAsTimeAsBoolean
+  include ActAsGendered
+  act_as_gendered allow_nil: true
 
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 

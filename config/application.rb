@@ -13,6 +13,8 @@ Bundler.require(:default, Rails.env)
 
 module YNote
   class Application < Rails::Application
+    config.autoload_paths += %W(#{config.root}/lib)
+
     config.to_prepare do
       Devise::SessionsController.layout 'sessions'
     end

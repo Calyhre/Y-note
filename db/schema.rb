@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20140207140518) do
     t.string   "first_name"
     t.string   "last_name"
     t.date     "birthdate"
-    t.boolean  "sexe"
+    t.string   "gender"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

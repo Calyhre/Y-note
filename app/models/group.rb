@@ -4,7 +4,7 @@ class Group < ActiveRecord::Base
 
   belongs_to :period
   has_and_belongs_to_many :users
-  has_many :group_subjects
+  has_many :courses
   has_many :comments, as: :parent
 
   time_as_boolean :deleted, opposite: :active

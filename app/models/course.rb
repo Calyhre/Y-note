@@ -1,4 +1,4 @@
-class GroupSubject < ActiveRecord::Base
+class Course < ActiveRecord::Base
   include ActAsTimeAsBoolean
 
   belongs_to :teacher, class_name: User

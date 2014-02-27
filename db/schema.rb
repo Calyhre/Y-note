@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207140518) do
+ActiveRecord::Schema.define(version: 20140227164147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140207140518) do
     t.datetime "deleted_at"
   end
 
-  create_table "group_subjects", force: true do |t|
+  create_table "courses", force: true do |t|
     t.integer  "teacher_id"
     t.integer  "group_id"
     t.integer  "subject_id"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20140207140518) do
   end
 
   create_table "tests", force: true do |t|
-    t.integer  "group_subject_id"
+    t.integer  "course_id"
     t.string   "title"
     t.text     "instruction"
     t.string   "penalty_type"

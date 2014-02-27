@@ -16,4 +16,25 @@ class User < ActiveRecord::Base
   validate  :email, uniqueness: { case_sensitive: false }
 
   time_as_boolean :deleted, opposite: :active
+
+  def roles
+    @roles ||= self.groups.map &:role
+  end
+
+  def student?
+    roles.include? 'student'
+  end
+
+  def full_name truncate: false
+    if truncate
+      [first_name, "#{last_name[0]}."].join ' '
+    else
+      [first_name, last_name].join ' '
+    end
+  end
+
+  # To be replaced by DB field
+  def avatar
+    'default-avatar.png'
+  end
 end

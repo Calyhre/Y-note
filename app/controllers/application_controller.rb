@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   def redirect
-    render :sucess, nothing: true
+    redirect_to send("#{current_user.roles.first.pluralize}_root_path")
   end
 end

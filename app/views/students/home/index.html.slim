@@ -1,0 +1,21 @@
+section.dashboard
+  header
+    .user
+      = user_avatar
+      .infos
+        h2= current_user.full_name
+        i.fa.fa-map-marker>
+        = "Bordeaux ● #{current_user.groups.first.title}"
+
+      .to-do
+        .average
+          .pie-chart
+            .chart
+              canvas width='160' height='160' data-avg='12.49' data-class-avg='13.48' data-avg-max='20'
+              h2= 12.49
+            ul.legende
+              | &nbsp;&nbsp;Moyennes :
+              li Générale
+              li Personnelle
+          .line-chart.eleve
+            canvas width='400' height='160'

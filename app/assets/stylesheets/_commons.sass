@@ -16,6 +16,7 @@ body, html
   color: $dark_grey
   width: 100%
   height: 100%
+  margin: 0
 
 ul
   list-style: none
@@ -325,3 +326,149 @@ button, input[type="submit"], input[type="button"], a.button
   stroke: $blue
   stroke-width: 4
   stroke-dasharray: 180, 999
+
+#sidebar
+  position: absolute
+  background-color: darken($grey, 50)
+  top: 0
+  left: -280px
+  width: 280px
+  height: 100%
+  overflow-y: scroll
+  color: $grey
+  -webkit-transition: left 0.4s
+  &.open
+    left: 0
+    & + #content
+      margin-left: 280px
+  header
+    .user
+      padding: 10px
+      overflow: auto
+      .avatar
+        width: 80px
+        border-radius: 50%
+        float: left
+        margin-right: 10px
+      .infos
+        margin-top: 20px
+        font-size: 0.8em
+        strong
+          font-weight: 200
+          font-size: 1.6em
+          font-family: "Raleway"
+  hr
+    width: 100%
+    background-color: darken($grey, 62)
+    border: none
+    border-top: 1px solid darken($grey, 64)
+    border-bottom: 1px solid darken($grey, 48)
+    height: 4px
+    margin: 24px 0
+  h3
+    padding-left: 20px
+    font-size: 1em
+    margin: 8px 0
+    color: darken($grey, 30)
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+    li
+      border-bottom: 1px solid darken($grey, 48)
+      &:last-child
+        border-bottom: none
+      a
+        padding: 12px 16px
+        border-left: 4px solid transparent
+        text-shadow: 0 1px 2px darken($grey, 64)
+        i
+          width: 20px
+          text-align: center
+          margin-right: 8px
+        &:hover
+          border-left: 4px solid lighten($blue, 10)
+          background-color: darken($grey, 45)
+          color: #FFF
+        &.current
+          border-left: 4px solid $blue
+          background-color: darken($grey, 56)
+          color: lighten($blue, 10)
+        display: inline-block
+        width: 100%
+        height: 100%
+        text-decoration: none
+        color: $grey
+
+#content
+  position: relative
+  height: 100%
+  overflow: hidden
+  -webkit-transition: margin-left 0.4s
+  header#topbar
+    position: relative
+    z-index: 1
+    @media (min-width: 1024px)
+      position: absolute
+    top: 0
+    width: 100%
+    height: 50px
+    line-height: 50px
+    background-color: #FFF
+    box-shadow: 0 1px 2px lighten($dark_grey, 40)
+    button, a.button
+      display: block
+      float: left
+      background-color: transparent
+      border-radius: 0
+      color: $dark_grey
+      text-shadow: none
+      border-right: 1px solid $grey
+      &:hover
+        background-color: lighten($grey, 5)
+      &:active
+        background-color: lighten($grey, 3)
+    .logo
+      position: relative
+      display: inline-block
+      vertical-align: middle
+      width: 160px
+      height: 30px
+      top: -2px
+    nav.left
+      position: absolute
+      display: inline-block
+      top: 0
+      left: 0
+    nav.right
+      position: absolute
+      display: inline-block
+      top: 0
+      right: 0
+      vertical-align: top
+      ul
+        list-style: none
+        margin: 0
+        padding: 0
+        li
+          display: inline-block
+          vertical-align: top
+          &.user
+            margin-right: 20px
+            .avatar
+              border-radius: 50%
+              height: 30px
+              line-height: 48px
+              vertical-align: middle
+              margin-right: 10px
+          button
+            color: lighten($dark_grey, 10)
+  > section
+    position: absolute
+    z-index: 0
+    top: 50px
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 20px
+    overflow-y: auto

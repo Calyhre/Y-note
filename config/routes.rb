@@ -10,7 +10,9 @@ YNote::Application.routes.draw do
     end
   end
 
-
+  namespace :students do
+    root to: 'home#index'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

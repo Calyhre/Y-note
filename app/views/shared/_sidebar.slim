@@ -1,0 +1,22 @@
+#sidebar.open
+  header
+    .user
+      = user_avatar
+      .infos
+        strong= current_user.full_name
+        br
+        i.fa.fa-map-marker>
+        = "Bordeaux ● #{current_user.groups.first.title}"
+  hr
+  nav.menu
+    - if current_user.student?
+      h3 Étudiant
+      ul
+        li.students_index
+          = sidebar_link text: 'Dashboard', link: students_root_path, icon: 'dashboard'
+        li.students_devoirs
+          = sidebar_link text: 'Devoirs', link: '#', icon: 'file-text-o'
+        li.students_notes
+          = sidebar_link text: 'Notes', link: '#', icon: 'bar-chart-o'
+        li.students_settings
+          = sidebar_link text: 'Préférences', link: '#', icon: 'gears'

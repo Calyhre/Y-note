@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :groups
-  has_many :subject_groups
+  has_many :group_subjects, foreign_key: :teacher_id
   has_many :returned_exams
   has_many :contestations
   has_many :comments

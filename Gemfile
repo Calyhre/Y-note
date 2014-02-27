@@ -17,6 +17,8 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'slim-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'font-awesome-rails'
+gem 'normalize-rails'
+gem 'jquery-rails'
 
 gem 'faker'
 

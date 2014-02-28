@@ -9,6 +9,7 @@
         = "Bordeaux ● #{current_user.groups.first.title}"
   hr
   nav.menu
+
     - if current_user.student?
       h3 Étudiant
       ul
@@ -18,5 +19,22 @@
           = sidebar_link text: 'Devoirs', link: students_tests_path, icon: 'file-text-o'
         li.students_notes
           = sidebar_link text: 'Notes', link: '#', icon: 'bar-chart-o'
-        li.students_settings
-          = sidebar_link text: 'Préférences', link: '#', icon: 'gears'
+
+
+    - if current_user.teacher?
+      hr
+
+      h3 Professeur
+      ul
+        li.teachers_index
+          = sidebar_link text: 'Dashboard', link: teachers_root_path, icon: 'dashboard'
+        li.teachers_devoirs
+          = sidebar_link text: 'Devoirs', link: teachers_tests_path, icon: 'file-text-o'
+        li.teachers_classes
+          = sidebar_link text: 'Classes', link: '#', icon: 'group'
+
+    hr
+
+    ul
+      li.settings
+        = sidebar_link text: 'Préférences', link: '#', icon: 'gears'

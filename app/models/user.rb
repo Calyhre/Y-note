@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     roles.include? 'student'
   end
 
+  def teacher?
+    roles.include? 'teacher'
+  end
+
   def full_name truncate: false
     if truncate
       [first_name, "#{last_name[0]}."].join ' '

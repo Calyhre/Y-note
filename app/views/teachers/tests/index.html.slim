@@ -1,0 +1,13 @@
+section.devoirs
+    - @courses.each do |course|
+      h3= course.subject.title
+    table.list
+      = table_headers do
+        = table_header title: '#'
+        = table_header title: 'Matière', sort: true, default: true
+        = table_header title: 'Devoir', sort: true
+        = table_header title: 'Date de rendu', sort: true
+        = table_header title: 'Avancement', sort: true
+        = table_header title: 'Actions'
+    /   tbody
+    /     = render partial: 'test_row', collection: @tests, as: :test

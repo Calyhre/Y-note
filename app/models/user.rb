@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   time_as_boolean :deleted, opposite: :active
 
   def roles
-    @roles ||= self.groups.map &:role
+    @roles ||= all_roles
   end
 
   def student?
@@ -41,5 +41,14 @@ class User < ActiveRecord::Base
 
   def returned_exam_for_test(test)
     returned_exams.find_by test: test
+  end
+
+  private
+
+  def all_roles
+    roles = self.groups.map(&:role)
+    roles << 'teacher' if courses.any?
+
+    roles
   end
 end

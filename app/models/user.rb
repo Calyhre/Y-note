@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :groups
   has_many :courses, foreign_key: :teacher_id
+  has_many :tests, through: :groups
   has_many :returned_exams
   has_many :contestations
   has_many :comments

@@ -1,0 +1,11 @@
+tr onclick="document.location = '#{students_test_path test}';"
+
+  td= test.icon_status_for_current_user
+  td= test.course_subject.title
+  td= test.title
+  td= test.end_at.strftime '%d/%m/%Y à %Hh%M'
+  td= test.literal_status_for_current_user
+  td
+    i.fa.fa-comment-o.fa-fw
+    i.fa.fa-file-text-o.fa-fw
+    i.fa.fa-print.fa-fw

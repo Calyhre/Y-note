@@ -1,0 +1,35 @@
+section.devoirs
+  - if @tests.any?
+    table.list
+      thead
+        tr
+          th #
+          th.down
+            | Matière
+            .sort
+              i.fa.fa-caret-up
+              i.fa.fa-caret-down
+          th
+            | Devoir
+            .sort
+              i.fa.fa-caret-up
+              i.fa.fa-caret-down
+          th
+            | Date de rendu
+            .sort
+              i.fa.fa-caret-up
+              i.fa.fa-caret-down
+          th
+            | Avancement
+            .sort
+              i.fa.fa-caret-up
+              i.fa.fa-caret-down
+          th
+            | Actions
+            .sort
+              i.fa.fa-caret-up
+              i.fa.fa-caret-down
+      tbody
+        = render partial: 'test_row', collection: @tests, as: :test
+  - else
+    h3 Aucun devoirs pour l'instant

@@ -38,4 +38,8 @@ class User < ActiveRecord::Base
   def avatar
     'default-avatar.png'
   end
+
+  def returned_exam_for_test(test)
+    returned_exams.find_by test: test
+  end
 end

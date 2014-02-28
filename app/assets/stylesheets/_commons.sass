@@ -162,13 +162,13 @@ table.list
               bottom: -4px
         &:last-child
           border-right: none
-        &.down
+        &.desc
           i.fa.fa-caret-down
             color: #FFF
-        &.up
+        &.asc
           i.fa.fa-caret-up
             color: #FFF
-        &.down:after, &.up:after
+        &.desc:after, &.asc:after
           content: ""
           position: absolute
           top: 0
@@ -176,6 +176,11 @@ table.list
           width: 100%
           height: 3px
           background-color: darken($grey, 50)
+
+        a
+          color: inherit
+          text-decoration: none
+
       &:last-child
         td
           border-bottom: none

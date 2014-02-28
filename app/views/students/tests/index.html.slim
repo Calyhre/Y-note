@@ -1,34 +1,14 @@
 section.devoirs
   - if @tests.any?
     table.list
-      thead
-        tr
-          th #
-          th.down
-            | Matière
-            .sort
-              i.fa.fa-caret-up
-              i.fa.fa-caret-down
-          th
-            | Devoir
-            .sort
-              i.fa.fa-caret-up
-              i.fa.fa-caret-down
-          th
-            | Date de rendu
-            .sort
-              i.fa.fa-caret-up
-              i.fa.fa-caret-down
-          th
-            | Avancement
-            .sort
-              i.fa.fa-caret-up
-              i.fa.fa-caret-down
-          th
-            | Actions
-            .sort
-              i.fa.fa-caret-up
-              i.fa.fa-caret-down
+      = table_headers do
+        = table_header title: '#'
+        = table_header title: 'Matière', sort: true, default: true
+        = table_header title: 'Devoir', sort: true
+        = table_header title: 'Date de rendu', sort: true
+        = table_header title: 'Avancement', sort: true
+        = table_header title: 'Actions'
+
       tbody
         = render partial: 'test_row', collection: @tests, as: :test
   - else

@@ -14,4 +14,39 @@ module ApplicationHelper
       content_tag(:i, nil, class: " fa fa-#{icon} #{classes}") + text
     end
   end
+
+  def table_headers
+    content_tag :thead do
+      content_tag :tr do
+        yield
+      end
+    end
+  end
+
+  def table_header( sort: false, title:, slug: nil, default: false )
+    slug ||= title.parameterize
+
+    sort_by, order = params[:sort].split ',' if params[:sort]
+    if sort_by
+      sort_by = nil unless sort_by == slug
+    else
+      sort_by = slug if default
+    end
+
+    order ||= 'desc'
+
+
+    content_tag(:th, class: sort_by ? order : nil) do
+      if sort
+        link_to "?sort=#{slug},#{order == 'asc' ? 'desc' : 'asc'}" do
+          title.html_safe + content_tag(:div, class: 'sort') do
+            concat content_tag(:i, nil, class: 'fa fa-caret-up')
+            concat content_tag(:i, nil, class: 'fa fa-caret-down')
+          end
+        end
+      else
+        title
+      end
+    end
+  end
 end

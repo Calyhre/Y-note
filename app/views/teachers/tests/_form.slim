@@ -1,0 +1,66 @@
+= nested_form_for test, url: teachers_course_tests_path(course_id: test.course.id) do |f|
+  .page
+    .bullshit
+      = f.number_field :coefficient, placeholder: 'Coefficient'
+      = f.datetime_field :start_at, placeholder: 'Début'
+      = f.datetime_field :end_at, placeholder: 'Fin'
+      = f.select :grading_scheme, Test::GRADING_SCHEMES
+    h1= f.text_field :title, placeholder: 'Titre du test ...'
+    = f.text_area :instruction, class: 'intro', placeholder: 'Consignes ...'
+
+    ol#questions
+      = f.fields_for :questions do |question|
+        li.question
+          .modal.settings
+            h3 Paramètres
+            ul
+              li
+                = question.label :max_points, 'Barème : '
+                = question.number_field :max_points, size: 3, value: 0
+                | points
+              li
+                = question.label :penalty_type, 'Correction : '
+                = question.select :penalty_type, Question::PENALTY_TYPES
+              li
+                = question.label :penalty, 'Pénalité : '
+                = question.number_field :penalty, size: 3, value: 0
+                | points
+          .modal-overlay
+          .controls
+            ul
+              li.settings-toggle
+                i.fa.fa-wrench.fa-fw
+              li
+                = question.link_to_remove do
+                  i.fa.fa-trash-o.fa-fw
+          h2= question.text_field :title, placeholder: 'Question ...'
+          h3.hint= question.text_field :instruction, placeholder: 'Indice ou consigne pour la question ...'
+          = question.fields_for :choices do |choice|
+            ul.qcm
+              li
+                = choice.link_to_remove do
+                  i.fa.fa-trash-o.fa-fw.red
+                = choice.check_box :correct
+                = choice.label :correct do
+                  = choice.text_field :title, placeholder: 'Texte de la réponse ...'
+          = question.hidden_field :question_type, value: 'choices'
+          = question.link_to_add :choices do
+            i.fa.fa-plus.fa-fw>
+            | Ajouter une réponse
+
+  .page-controls
+    h2
+      i.fa.fa-plus>
+      | Ajouter une question
+    = f.link_to_add :questions, data: { target: "#questions" }, class: 'button'  do
+      i.fa.fa-list-ul.fa-fw>
+      | Choix multiple
+    .button
+      i.fa.fa-font.fa-fw>
+      | Réponse libre
+    .button
+      i.fa.fa-code.fa-fw>
+      | Code
+
+  .submit
+    = f.submit 'loll'

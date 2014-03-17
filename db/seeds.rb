@@ -26,4 +26,4 @@ ing3 = Group.create! title: 'ING3', role: 'student', users: users, period: year
 development = Subject.create!( title: 'Development' )
 ruby = Subject.create!( title: 'Ruby', parent: development )
 
-ruby_ing3 = GroupSubject.create!( teacher: users.shuffle.first, group: ing3, subject: ruby )
+ruby_ing3 = Course.create!( teacher: users.shuffle.first, group: ing3, subject: ruby )

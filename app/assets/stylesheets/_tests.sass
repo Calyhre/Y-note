@@ -1,0 +1,215 @@
+@import colors
+
+.test
+  &.new
+    [type="text"], textarea
+      color: $dark_grey
+      border: none
+    h1
+      [type="text"]
+        font-weight: bold
+    textarea.intro
+      resize: none
+      outline: 0
+      width: 100%
+      border-left: 4px solid $dark_grey
+
+    > .controls
+      background-color: #FFF
+      padding: 20px
+      text-align: left
+  .page, .page-controls
+    position: relative
+    background-color: #FFF
+    padding: 40px
+    max-width: 800px
+    margin: 20px auto
+    font-size: 1.2em
+    &.page
+      margin-top: 0
+  ol
+    position: relative
+    counter-reset: listNumbering
+    list-style: none
+
+  .intro
+    line-height: 1.4em
+    font-size: 0.9em
+    border-left: 4px solid $dark_grey
+    padding-left: 20px
+
+  li.question
+    position: relative
+    counter-increment: listNumbering
+    &:before
+      content: counter(listNumbering, decimal) '.'
+      font-size: 1.7em
+      position: absolute
+      right: 100%
+      margin-right: 20px
+      font-weight: bold
+    .settings
+      position: absolute
+      background-color: #FFF
+      top: 0
+      right: 100%
+      margin-right: 100px
+      padding: 20px
+      width: 280px
+      &.shown
+        + .controls
+          .settings-toggle
+            background-color: lighten($dark_grey, 30)
+            color: #FFF
+            border-radius: 3px
+      > ul
+        > li
+          text-align: right
+          clear: both
+          font-size: 0.8em
+          line-height: 34px
+          label
+            float: left
+          input[type="number"]
+            width: 3em
+            text-align: right
+            border: none
+            outline: 0
+            background-color: transparent
+    .controls
+      position: absolute
+      right: 100%
+      margin-right: 20px
+      top: 50px
+      ul
+        li
+          margin-bottom: 10px
+      a
+        color: #5d6d7f
+      i.fa
+        width: 35px
+        font-size: 1.4em
+        height: 35px
+        line-height: 35px
+        cursor: pointer
+        &:hover
+          background-color: lighten($dark_grey, 30)
+          color: #FFF
+          border-radius: 3px
+    h2
+      margin-bottom: 0
+      input
+        font-weight: bold
+    h3
+      margin-top: 0
+      font-weight: normal
+      font-size: 1em
+      color: darken($grey, 20)
+      input[type="text"]
+        color: darken($grey, 20)
+    > ul
+      list-style: none
+      margin: 0
+      padding: 0
+      li
+        padding: 8px 0
+        overflow: hidden
+        input
+          padding: 0
+
+    ul.qcm
+      li
+        padding: 0 0 10px
+        display: flex
+        label
+          flex: 1
+    a.add_nested_fields
+      color: $dark_grey
+      text-decoration: none
+
+    input[type="radio"], input[type="checkbox"]
+      &:not(:checked), &:checked
+        position: absolute
+        left: -9999px
+
+      &:not(:checked) + label, &:checked + label
+        position: relative
+        padding-left: 30px
+        cursor: pointer
+
+        &:before
+          content: ''
+          position: absolute
+          left: 0
+          width: 16px
+          height: 16px
+          border: 3px solid $dark_grey
+          background: #FFF
+        &:after
+          content: ''
+          position: absolute
+          top: 6px
+          left: 6px
+          width: 10px
+          height: 10px
+          background-color: $dark_grey
+          transition: all .2s
+
+      &:disabled:not(:checked) + label, &:disabled:checked + label
+        color: lighten($dark_grey, 30)
+        &:before
+          border: 3px solid lighten($dark_grey, 30)
+        &:after
+          background-color: lighten($dark_grey, 30)
+
+      &:not(:checked) + label
+        color: lighten($dark_grey, 20)
+        &:after
+          opacity: 0
+          -webkit-transform: scale(0)
+
+      &:checked + label
+        &:after
+          opacity: 1
+          -webkit-transform: scale(1)
+
+    textarea
+      width: 100%
+      border: none
+      resize: none
+      outline: 0
+      line-height: 1.4em
+      &::-webkit-input-placeholder
+        color:    #DDE3E8
+      &:-moz-placeholder
+        color:    #DDE3E8
+      :-ms-input-placeholder
+        color:    #DDE3E8
+
+    pre code
+      outline: 0
+      margin-right: 40px
+
+  .page-controls
+    margin-top: 20px
+    font-size: 0.8em
+    .button
+      text-align: left
+      display: inline-block
+      padding: 8px 20px
+      width: 32%
+      margin-right: 2%
+      background-color: lighten($dark_grey, 40)
+      color: #FFF
+      border-radius: 3px
+      font-size: 1.2em
+      margin-bottom: 10px
+      cursor: pointer
+      line-height: 1em
+      height: auto
+      text-shadow: none
+      &:hover
+        background-color: lighten($dark_grey, 20)
+      &:last-child
+        margin-bottom: 0px
+        margin-right: 0

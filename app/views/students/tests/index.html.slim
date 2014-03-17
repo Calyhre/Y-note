@@ -10,6 +10,6 @@ section.devoirs
         = table_header title: 'Actions'
 
       tbody
-        = render partial: 'test_row', collection: @tests, as: :test
+        = render partial: 'list_item', collection: @tests, as: :test
   - else
     h3 Aucun devoirs pour l'instant

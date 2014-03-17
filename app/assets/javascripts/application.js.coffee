@@ -1,4 +1,5 @@
 #= require jquery
+#= require jquery_nested_form
 #= require_tree ./vendor
 #= require_tree .
 
@@ -25,7 +26,7 @@ jQuery ->
   $('pre code').each (i, e) ->
     hljs.highlightBlock(e)
 
-  $('.settings-toggle, .modal-overlay').on 'click', ->
+  $('#questions').on 'click', '.settings-toggle, .modal-overlay', ->
     $(this).parents('.question').find('.settings').toggleClass 'shown'
 
   $('.devoir.new .question .qcm label input').on 'keyup', ->

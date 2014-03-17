@@ -5,7 +5,7 @@ class Test < ActiveRecord::Base
   # percentage  = 0% -> 100%
   # letter      = A+ -> F-
   # oeapdt      = http://en.wikipedia.org/wiki/Hogwarts#Grading_and_assessment
-  GRADING_SCHEMES = %w( classic percentage letter oeapdt )
+  GRADING_SCHEMES = %w( classic percentage letter oeapdt random )
 
   PENALTY_TYPES = %w( none hourly daily weekly )
 
@@ -13,6 +13,8 @@ class Test < ActiveRecord::Base
   has_many :questions
   has_many :returned_exams
   has_many :comments, as: :parent
+
+  accepts_nested_attributes_for :questions
 
   delegate :subject, to: :course, prefix: true
 

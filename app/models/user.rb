@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
 
   def returned_exam_for_test(test)
     returned_exam = returned_exams.find_by test: test
-    returned_exam ||= returned_exams.new(test: test) if test.active?
+    returned_exam ||= returned_exams.new(test: test)
 
     returned_exam
   end

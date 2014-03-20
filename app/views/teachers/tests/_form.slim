@@ -8,10 +8,10 @@
           = f.number_field :coefficient, placeholder: 'Coefficient'
         li
           = f.label :coefficient, 'Début :'
-          = f.datetime_field :start_at, placeholder: 'Début', class: 'datepicker', value: test.start_at.try(:strftime,'%d/%m/%y %H:%M')
+          = f.datetime_field :start_at, placeholder: 'Début', class: 'datepicker', value: test.start_at
         li
           = f.label :coefficient, 'Fin :'
-          = f.datetime_field :end_at, placeholder: 'Fin', class: 'datepicker', value: test.start_at.try(:strftime,'%d/%m/%y %H:%M')
+          = f.datetime_field :end_at, placeholder: 'Fin', class: 'datepicker', value: test.start_at
         li
           = f.label :coefficient, 'Notation :'
           = f.select :grading_scheme, Test::GRADING_SCHEMES
@@ -31,14 +31,14 @@
             ul
               li
                 = question.label :max_points, 'Barème : '
-                = question.number_field :max_points, size: 3, value: 0
+                = question.number_field :max_points, size: 3
                 | points
               li
                 = question.label :penalty_type, 'Correction : '
                 = question.select :penalty_type, Question::PENALTY_TYPES
               li
                 = question.label :penalty, 'Pénalité : '
-                = question.number_field :penalty, size: 3, value: 0
+                = question.number_field :penalty, size: 3
                 | points
           .modal-overlay
           .controls

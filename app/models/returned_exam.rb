@@ -14,20 +14,27 @@ class ReturnedExam < ActiveRecord::Base
   accepts_nested_attributes_for :answers
 
   def answer_for_question(question)
+    answer = nil
     if question.question_type == 'choices'
       answer = answers.find_by(question: question)
-      answer.answer.split ',' unless answer.nil?
+      answer = answer.answer.split ',' unless answer.nil?
     else
-      answers.find_by question: question
+      answer = answers.find_by question: question
     end
+
+    answer ||= []
+  end
+
+  def released?
+    self.persisted?
   end
 
   def literal_grade
     case test.grading_scheme
     when 'classic', 'random'
-      "#{grade.to_i} / 20"
+      "#{(grade.to_f * 2 * 20).round / 2.0} / 20"
     when 'percentage'
-      "#{grade.to_i / 20 * 100}%"
+      "#{grade.to_f * 100}%"
     when 'letter'
       # TODO
       "TODO"

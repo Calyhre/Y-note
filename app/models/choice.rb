@@ -6,4 +6,6 @@ class Choice < ActiveRecord::Base
   time_as_boolean :deleted, opposite: :active
 
   validates :title, presence: true
+
+  scope :correct, -> { where('correct = ?', true) }
 end

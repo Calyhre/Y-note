@@ -47,3 +47,6 @@ Icon
 # Always ignore important files
 /config/database.yml
 /.env
+
+
+dump.rdb

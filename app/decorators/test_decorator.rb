@@ -11,8 +11,8 @@ class TestDecorator < Draper::Decorator
         "À rendre"
       end
     else
-      if returned_exam
-        "Rendu" + (returned_exam.grade? ? " ( #{ returned_exam.literal_grade } )" : '')
+      if returned_exam.released?
+        "Rendu" + (object.correction_done? ? " ( #{ returned_exam.literal_grade } )" : '')
       else
         "Non rendu"
       end
@@ -29,7 +29,7 @@ class TestDecorator < Draper::Decorator
         h.content_tag :i, nil, class: "fa fa-file-o"
       end
     else
-      if returned_exam
+      if returned_exam.released?
         h.content_tag :i, nil, class: "fa fa-check green"
       else
         h.content_tag :i, nil, class: "fa fa-ban"

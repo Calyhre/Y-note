@@ -2,9 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.0'
 
 gem 'puma'
-
-# For when we need some workers
-# gem 'sidekiq'
+gem 'sidekiq'
 
 gem 'rails', '4.0.2'
 gem 'pg'

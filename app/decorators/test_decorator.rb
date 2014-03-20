@@ -12,7 +12,7 @@ class TestDecorator < Draper::Decorator
       end
     else
       if returned_exam
-        "Rendu ( #{ returned_exam.literal_grade } )"
+        "Rendu" + (returned_exam.grade? ? " ( #{ returned_exam.literal_grade } )" : '')
       else
         "Non rendu"
       end

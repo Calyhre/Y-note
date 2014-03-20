@@ -14,7 +14,7 @@ class Test < ActiveRecord::Base
   has_many :returned_exams
   has_many :comments, as: :parent
 
-  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :questions, allow_destroy: true
 
   delegate :subject, to: :course, prefix: true
 
@@ -25,8 +25,13 @@ class Test < ActiveRecord::Base
 
   default_scope { order('end_at') }
   scope :started, ->{ where('start_at < ?', Time.current) }
+  scope :editable, ->{ where('start_at > ?', Time.current) }
 
   def active?
     start_at < Time.current && end_at > Time.current
+  end
+
+  def editable?
+    start_at > Time.current
   end
 end

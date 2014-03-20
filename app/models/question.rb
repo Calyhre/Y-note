@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
   PENALTY_TYPES = %w( all-in proportional )
 
   belongs_to :test
-  has_many :choices
+  has_many :choices, dependent: :destroy
   has_many :answers
   has_many :comments, as: :parent
 
@@ -14,5 +14,5 @@ class Question < ActiveRecord::Base
   validates :title, :question_type, :max_points, presence: true
   validates :question_type, inclusion: { in: QUESTION_TYPES }
 
-  accepts_nested_attributes_for :choices
+  accepts_nested_attributes_for :choices, allow_destroy: true
 end

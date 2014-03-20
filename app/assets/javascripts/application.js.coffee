@@ -2,6 +2,7 @@
 #= require jquery_nested_form
 #= require_tree ./vendor
 #= require_tree .
+#= require_self
 
 Array::first ?= (n) ->
   if n? then @[0...(Math.max 0, n)] else @[0]
@@ -26,8 +27,12 @@ jQuery ->
   $('pre code').each (i, e) ->
     hljs.highlightBlock(e)
 
-  $('#questions').on 'click', '.settings-toggle, .modal-overlay', ->
-    $(this).parents('.question').find('.settings').toggleClass 'shown'
+  $('.page').on 'click', '.settings-toggle', ->
+    $('.modal.settings').removeClass 'shown'
+    $(this).parents('.controls').parent().find('> .settings').addClass 'shown'
+
+  $('.page').on 'click', '.modal-overlay', ->
+    $(this).parent().find('> .settings').removeClass 'shown'
 
   $('.devoir.new .question .qcm label input').on 'keyup', ->
     qcm = $(this).parents('.qcm')

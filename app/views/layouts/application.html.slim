@@ -24,7 +24,7 @@ html
               = user_avatar
               = current_user.full_name truncate: true
             li
-              = link_to 'logout', destroy_user_session_path, class: 'button'
+              = link_to 'logout', [:destroy, :user, :session], class: 'button'
       = yield
 
   = javascript_include_tag  'application'

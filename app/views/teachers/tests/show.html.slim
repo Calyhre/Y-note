@@ -13,3 +13,12 @@ section.test
               li
                 input type='radio'
                 label= choice.title
+
+  - if @test.editable?
+    .page-controls
+      = link_to [:edit, :teachers, @test.course, @test], class: 'button'  do
+        i.fa.fa-pencil.fa-fw>
+        | Editer le devoir
+      = link_to [:edit, :teachers, @test.course, @test], class: 'button'  do
+        i.fa.fa-ban.fa-fw>
+        | Annuler le devoir

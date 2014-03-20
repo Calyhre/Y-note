@@ -1,23 +1,37 @@
 class Teachers::TestsController < Teachers::BaseController
 
   before_filter :load_course, except: :index
+  before_filter :load_test, except: :index
 
   def index
     @courses = current_user.courses
   end
 
+  def show
+  end
+
   def new
-    @test = Test.new course: @course
+  end
+
+  def edit
   end
 
   def create
-    @test = Test.new strong_params
-
-    if @test.save
+    if @test.update_attributes strong_params
       @course.tests << @test
-      redirect_to @test
+      redirect_to [:teachers, @course, @test]
     else
-      render action: :new
+      render action: :edit
+    end
+  end
+
+  def update
+    return not_found unless @test.editable?
+
+    if @test.update_attributes strong_params
+      redirect_to [:teachers, @course, @test]
+    else
+      render action: :edit
     end
   end
 
@@ -26,6 +40,15 @@ class Teachers::TestsController < Teachers::BaseController
   def load_course
     @course = current_user.courses.find_by id: params[:course_id]
     return not_found unless @course
+  end
+
+  def load_test
+    if params[:id]
+      @test = current_user.courses_tests.find params[:id]
+    else
+      @test = Test.new course: @course
+    end
+    return not_found unless @test
   end
 
   def strong_params
@@ -51,6 +74,7 @@ class Teachers::TestsController < Teachers::BaseController
         :penalty,
         :_destroy,
         choices_attributes: [
+          :id,
           :title,
           :correct,
           :position,

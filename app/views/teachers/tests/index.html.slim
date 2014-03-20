@@ -1,7 +1,7 @@
 section.devoirs
     - @courses.each do |course|
       header
-        = link_to '+ New test', new_teachers_course_test_path( course_id: course.id ), class: 'button'
+        = link_to '+ New test',  [:new, :teachers, course, :test], class: 'button'
         h3= course.subject.title
       table.list
         = table_headers do

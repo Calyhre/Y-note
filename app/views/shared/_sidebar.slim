@@ -14,9 +14,9 @@
       h3 Étudiant
       ul
         li.students_index
-          = sidebar_link text: 'Dashboard', link: students_root_path, icon: 'dashboard'
+          = sidebar_link text: 'Dashboard', link: [:students, :root], icon: 'dashboard'
         li.students_devoirs
-          = sidebar_link text: 'Devoirs', link: students_tests_path, icon: 'file-text-o'
+          = sidebar_link text: 'Devoirs', link: [:students, :tests], icon: 'file-text-o'
         li.students_notes
           = sidebar_link text: 'Notes', link: '#', icon: 'bar-chart-o'
 
@@ -27,9 +27,9 @@
       h3 Professeur
       ul
         li.teachers_index
-          = sidebar_link text: 'Dashboard', link: teachers_root_path, icon: 'dashboard'
+          = sidebar_link text: 'Dashboard', link: [:teachers, :root], icon: 'dashboard'
         li.teachers_devoirs
-          = sidebar_link text: 'Devoirs', link: teachers_tests_path, icon: 'file-text-o'
+          = sidebar_link text: 'Devoirs', link: [:teachers, :tests], icon: 'file-text-o'
         li.teachers_classes
           = sidebar_link text: 'Classes', link: '#', icon: 'group'
 

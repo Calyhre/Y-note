@@ -1,0 +1,26 @@
+section.test
+  - returned_exam = @returned_exam
+  - test = returned_exam.test
+  = form_for returned_exam, url: [:students, test, :returned_exam] do |f|
+    .page
+      h1= test.title
+      p.intro= test.instruction
+
+      ol
+        = fields_for :answers do |answer|
+          - test.questions.each do |question|
+            - answer = returned_exam.answer_for_question question
+            - if question.question_type == 'choices'
+              li.question
+                h2= question.title
+                h3.hint= question.instruction
+                ul
+                  - question.choices.each do |choice|
+                    li
+                      - uid = SecureRandom.uuid
+                      - p answer
+                      input id=uid type="checkbox" name="answers[#{question.id}][answer][]" value=choice.id checked=('checked' if answer.include? choice.id.to_s )
+                      label for=uid = choice.title
+
+    .page-controls
+      .submit= f.submit 'Envoyer'

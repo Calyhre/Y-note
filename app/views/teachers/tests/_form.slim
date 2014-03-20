@@ -1,10 +1,25 @@
-= nested_form_for test, url: teachers_course_tests_path(course_id: test.course.id) do |f|
+= nested_form_for test, url:  [:teachers, test.course, test] do |f|
   .page
-    .bullshit
-      = f.number_field :coefficient, placeholder: 'Coefficient'
-      = f.datetime_field :start_at, placeholder: 'Début'
-      = f.datetime_field :end_at, placeholder: 'Fin'
-      = f.select :grading_scheme, Test::GRADING_SCHEMES
+    .modal.settings
+      h3 Paramètres
+      ul
+        li
+          = f.label :coefficient, 'Coefficient :'
+          = f.number_field :coefficient, placeholder: 'Coefficient'
+        li
+          = f.label :coefficient, 'Début :'
+          = f.datetime_field :start_at, placeholder: 'Début', class: 'datepicker', value: test.start_at.try(:strftime,'%d/%m/%y %H:%M')
+        li
+          = f.label :coefficient, 'Fin :'
+          = f.datetime_field :end_at, placeholder: 'Fin', class: 'datepicker', value: test.start_at.try(:strftime,'%d/%m/%y %H:%M')
+        li
+          = f.label :coefficient, 'Notation :'
+          = f.select :grading_scheme, Test::GRADING_SCHEMES
+    .modal-overlay
+    .controls
+      ul
+        li.settings-toggle
+          i.fa.fa-wrench.fa-fw
     h1= f.text_field :title, placeholder: 'Titre du test ...'
     = f.text_area :instruction, class: 'intro', placeholder: 'Consignes ...'
 
@@ -62,5 +77,4 @@
       i.fa.fa-code.fa-fw>
       | Code
 
-  .submit
-    = f.submit 'loll'
+    .submit= f.submit 'Envoyer'

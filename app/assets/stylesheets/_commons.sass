@@ -49,6 +49,36 @@ ul
     + .modal-overlay
       opacity: 1
       visibility: visible
+
+  &.settings
+    position: absolute
+    background-color: #FFF
+    top: 0
+    right: 100%
+    margin-right: 100px
+    padding: 20px
+    width: 280px
+    &.shown
+      + .controls
+        .settings-toggle
+          background-color: lighten($dark_grey, 30)
+          color: #FFF
+          border-radius: 3px
+    > ul
+      > li
+        text-align: right
+        clear: both
+        font-size: 0.8em
+        line-height: 34px
+        label
+          float: left
+        input[type="number"]
+          width: 3em
+          text-align: right
+          border: none
+          outline: 0
+          background-color: transparent
+
 .modal-overlay
   content: ""
   position: absolute

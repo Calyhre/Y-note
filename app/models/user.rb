@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups
   has_many :courses, foreign_key: :teacher_id
   has_many :tests, through: :groups
+  has_many :courses_tests, through: :courses, source: :tests
   has_many :returned_exams
   has_many :contestations
   has_many :comments
@@ -44,7 +45,10 @@ class User < ActiveRecord::Base
   end
 
   def returned_exam_for_test(test)
-    returned_exams.find_by test: test
+    returned_exam = returned_exams.find_by test: test
+    returned_exam ||= returned_exams.new(test: test) if test.active?
+
+    returned_exam
   end
 
   private

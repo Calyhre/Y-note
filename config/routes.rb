@@ -11,7 +11,9 @@ YNote::Application.routes.draw do
   end
 
   namespace :students do
-    resources :tests
+    resources :tests do
+      resource :returned_exam
+    end
     root to: 'home#index'
   end
 

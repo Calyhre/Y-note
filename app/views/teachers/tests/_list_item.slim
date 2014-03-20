@@ -1,9 +1,11 @@
-tr onclick="document.location = '#{students_test_path test}';"
-  td= test.icon_status_for_current_user
+tr onclick="document.location = '#{teachers_course_test_path test.course, test}';"
+  td #
   td= test.title
   td= test.end_at.strftime '%d/%m/%Y à %Hh%M'
-  td= test.literal_status_for_current_user
+  td #= test.literal_status_for_current_user
   td
     i.fa.fa-comment-o.fa-fw
-    i.fa.fa-file-text-o.fa-fw
+    - if test.editable?
+      = link_to [:edit, :teachers, test.course, test] do
+        i.fa.fa-file-text-o.fa-fw
     i.fa.fa-print.fa-fw

@@ -57,7 +57,7 @@ ul
     right: 100%
     margin-right: 100px
     padding: 20px
-    width: 280px
+    width: 320px
     &.shown
       + .controls
         .settings-toggle
@@ -66,12 +66,15 @@ ul
           border-radius: 3px
     > ul
       > li
-        text-align: right
-        clear: both
+        display: flex
+        justify-content: space-between
+        align-items: center
         font-size: 0.8em
-        line-height: 34px
-        label
-          float: left
+        line-height: 1em
+        vertical-align: middle
+        margin: 8px 0
+        input
+          max-width: 140px
         input[type="number"]
           width: 3em
           text-align: right

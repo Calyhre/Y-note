@@ -8,10 +8,14 @@
           = f.number_field :coefficient, placeholder: 'Coefficient'
         li
           = f.label :coefficient, 'Début :'
-          = f.datetime_field :start_at, placeholder: 'Début', class: 'datepicker', value: test.start_at
+          .inputs
+            = f.date_field :start_at
+            = f.time_field :start_at
         li
           = f.label :coefficient, 'Fin :'
-          = f.datetime_field :end_at, placeholder: 'Fin', class: 'datepicker', value: test.start_at
+          .inputs
+            = f.date_field :end_at
+            = f.time_field :end_at
         li
           = f.label :coefficient, 'Notation :'
           = f.select :grading_scheme, Test::GRADING_SCHEMES

@@ -1,2 +1,6 @@
 fr:
-  hello: "Hello world"
+  date:
+    order:
+      - :day
+      - :month
+      - :year

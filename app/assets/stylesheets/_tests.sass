@@ -25,8 +25,30 @@
     max-width: 800px
     margin: 20px auto
     font-size: 1.2em
-    &.page
-      margin-top: 0
+  .page
+    margin-top: 0
+    .controls
+      position: absolute
+      right: 100%
+      margin-right: 20px
+      top: 50px
+      ul
+        li
+          margin-bottom: 10px
+      a
+        color: #5d6d7f
+      i.fa
+        width: 35px
+        font-size: 1.4em
+        height: 35px
+        line-height: 35px
+        cursor: pointer
+        &:hover
+          background-color: lighten($dark_grey, 30)
+          color: #FFF
+          border-radius: 3px
+    > .controls
+      top: 70px
   ol
     position: relative
     counter-reset: listNumbering
@@ -76,26 +98,6 @@
             border: none
             outline: 0
             background-color: transparent
-    .controls
-      position: absolute
-      right: 100%
-      margin-right: 20px
-      top: 50px
-      ul
-        li
-          margin-bottom: 10px
-      a
-        color: #5d6d7f
-      i.fa
-        width: 35px
-        font-size: 1.4em
-        height: 35px
-        line-height: 35px
-        cursor: pointer
-        &:hover
-          background-color: lighten($dark_grey, 30)
-          color: #FFF
-          border-radius: 3px
     h2
       margin-bottom: 0
       input

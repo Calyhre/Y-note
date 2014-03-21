@@ -19,6 +19,7 @@ class Teachers::TestsController < Teachers::BaseController
   def create
     if @test.update_attributes strong_params
       @course.tests << @test
+      TestNotificationMailer.delay.new_test @test.id
       redirect_to [:teachers, @course, @test]
     else
       render action: :edit
@@ -28,7 +29,10 @@ class Teachers::TestsController < Teachers::BaseController
   def update
     return not_found unless @test.editable?
 
+    before = @test.start_at
+
     if @test.update_attributes strong_params
+      TestNotificationMailer.delay.update_test(@test.id) if @test.start_at != before
       redirect_to [:teachers, @course, @test]
     else
       render action: :edit

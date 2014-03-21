@@ -48,6 +48,12 @@ class Test < ActiveRecord::Base
     questions.not_with_choices.count > 0
   end
 
+  def mailing_list
+    course.group.users.map do |user|
+      "#{user.full_name} <#{user.email}>"
+    end
+  end
+
   GRADING_SCHEMES.each do |scheme|
     define_method "#{scheme}_grading_scheme?" do
       self.grading_scheme == scheme
